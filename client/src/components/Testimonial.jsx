@@ -9,8 +9,8 @@ const Testimonial = () => {
 
     return (
         <div className="py-28 px-6 md:px-16 lg:px-24 xl:px-44">
-           <Title title="What our Customer Say" sunTitle="Discover why discerning
-           travelers choose StayVenture for their luxury accommodations around
+           <Title title="What our Customer Say"
+            subTitle="Discover why discerning travelers choose StayVenture for their luxury accommodations around
            the world." />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3

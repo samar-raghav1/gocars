@@ -19,7 +19,7 @@ import Navbar from './components/Navbar';
 
 const App = () => {
   
-  
+ 
   const isOwnerPath = useLocation().pathname.startsWith('/owner');
 
   const {showLogin}=useAppContext();

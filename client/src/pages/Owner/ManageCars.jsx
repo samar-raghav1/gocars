@@ -24,10 +24,27 @@ const ManageCars = () => {
       toast.error(error.message)
     }
   }
+  const deleteCar=async()=>{
+    try {
+      const {data}=await axios.post("/api/owner/delete-car");
+      if(data.success){
+        setCars(data.cars)
+        toast.success(data.message)
+      }else{
+        toast.error(data.message)
+      }
+
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+
+  }
 
   useEffect(()=>{
     isOwner && fetchOwnerCars()
   },[isOwner])
+ 
   return (
     <div className='px-4 py-10 md:px-10 w-full'>
       <TitleOwner title="ManageCars" subTitle="View all listed cars, update their details
@@ -75,7 +92,7 @@ const ManageCars = () => {
                 <td className='p-3 flex items-center'>
                   <img src={car.isAvaliable ? assets.eye_close_icon :assets.eye_icon} alt="" 
                   className='cursor-pointer'/>
-                  <img src={assets.delete_icon} alt="" 
+                  <img onClick={()=>deleteCar()} src={assets.delete_icon} alt="" 
                   className='cursor-pointer'/>
                  
                 </td>

@@ -65,7 +65,7 @@ export const getOwnerCars=async(req,res)=>{
 }
 export const toggleCarAvailability=async(req,res)=>{
     try {
-        const {id}=req.user;
+        const {_id}=req.user;
         const {carId}=req.body;
         const car =await Car.findById(carId);
 
@@ -79,13 +79,13 @@ export const toggleCarAvailability=async(req,res)=>{
         
     } catch (error) {
      console.log(error.message);
-    res.json({success:false, message:error.message})        
+    res.json({success:false, message:error.message})
     }
 }
 
 export const deleteCar = async(req,res)=>{
     try {
-        const {id}=req.user;
+        const {_id}=req.user;
         const {carId}=req.body;
         const car =await Car.findById(carId);
 
