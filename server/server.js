@@ -16,7 +16,9 @@ res.send("Hello server is running properly");
 
 app.use(express.json());
 app.use(cors({
-    origin:'http://localhost:5173'
+    origin:process.env.CLIENT_URL,
+    methods:['GET','POST','DELETE','PUT','OPTIONS'],
+    allowedHeaders:['Content-Type','Authorization']
 }))
 app.use('/api/user',userRouter)
 app.use('/api/owner',ownerRouter)
