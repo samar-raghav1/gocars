@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  server:
+    container_name: gocars-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      - ./server/.env
+
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - gocars-network
+
+  mongo:
+    container_name: gocars-mongo
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - gocars-network
+volumes:
+  mongo-data:
+networks:
+  gocars-network:
+    driver: bridge

@@ -51,18 +51,18 @@ const Navbar = () => {
 
         <div className='hidden lg:flex items-center text-sm gap-2 border border-borderColor
         px-3 rounded-full max-w-56'>
-            <input type="text" className='py-1.5 w-full bg-transparent
+            <input type="text" name='nav-search' className='py-1.5 w-full bg-transparent
             outline-none  placeholder-gray-500' placeholder="Search products"/>
             <img src={assets.search_icon} alt='search'/>
         </div>
 
-        <div className='flex max-sm:flex-xol items-center gap-6 '>
-            <button onClick={()=>{isOwner ? navigate('/owner'): changeRole()}} className='cursor-pointer'>{isOwner ?"Dashboard" : "List Cars"}</button>
-
-            <button  onClick={()=>{user ? logout() :setShowLogin(true)}} className={`cursor-pointer relative ${user ? 
+        <div className='flex max-sm:flex-col items-center gap  '>
+            <a name={`${isOwner ? 'dashboard' : 'List Cars'}`} onClick={()=>{isOwner ? navigate('/owner'): changeRole()}} className={`cursor-pointer `}>{isOwner ?"Dashboard" : "List Cars"}</a>
+           
+            <a name={`${user? "Logout" : "Login"}`} onClick={()=>{user ? logout() :setShowLogin(true)}} className={`cursor-pointer relative ${user ? 
             "rounded-full" :"px-8 py-2 bg-primary hover:bg-primary-dull transtion-all text-white rounded-lg"} `}
            >
-              {user ? <img src={user?.image} alt="" className='w-10 h-10 rounded-full' />: "Login"}</button>
+              {user ? <img src={user?.image} alt="" className='w-10 h-10 rounded-full' />: "Login"}</a>
         </div>
       </div>
       <button className='sm:hidden cursor-pointer' aria-label='Menu'
